@@ -1,7 +1,5 @@
 name: Cypress Tests Run on Pipeline
-
 on: [push]
-
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -10,3 +8,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name : Install Cypress
+        run : npm instal cypress
+      - name: Cypress run 
+        id: cypress
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+      - name: Upload Cypress Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - name: Upload Cypress Videos
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-videos
+          path: cypress/videos
