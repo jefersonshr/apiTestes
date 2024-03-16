@@ -23,6 +23,8 @@
   "homepage": "https://github.com/barbaracabral/serverRestAPI#readme",
   "dependencies": {
     "cypress": "^10.11.0",
-    "unique-names-generator": "^4.7.1"
+    "unique-names-generator": "^4.7.1",
+    "lighthouse": "^11.4.0",
+    "lighthouse-ci": "^1.13.1"
   }
 }
